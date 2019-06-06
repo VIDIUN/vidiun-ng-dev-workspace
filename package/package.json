@@ -1,0 +1,65 @@
+{
+  "name": "@kaltura-ng/dev-workspace",
+  "version": "2.4.1",
+  "description": "Kaltura internal tool used to setup Kaltura applications development workspace",
+  "bin": {
+    "kws": "./bin/kws.js"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "release": "npm run build && standard-version"
+  },
+  "author": {
+    "name": "Kaltura Community",
+    "email": "community@kaltura.com"
+  },
+  "engines": {
+    "node": ">= 7.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaltura/kaltura-ng-dev-workspace"
+  },
+  "files": [
+    "lib/",
+    "readme.md",
+    "package.json",
+    "bin/*",
+    "LICENSE",
+    "src/"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@commitlint/config-angular": "^3.1.1",
+    "@commitlint/core": "^3.2.0",
+    "babel-polyfill": "^6.23.0",
+    "find-node-modules": "^1.0.4",
+    "find-root": "^1.0.0",
+    "glob": "^7.1.2",
+    "json2csv": "^3.7.3",
+    "lerna": "https://github.com/esakal/lerna.git#temp-publish",
+    "license-checker": "^11.0.0",
+    "lodash": "^4.17.4",
+    "npmlog": "^4.1.2",
+    "object-assign-deep": "^0.3.1",
+    "publish-release": "^1.3.3",
+    "read-pkg": "^2.0.0",
+    "shelljs": "^0.7.8",
+    "showdown": "^1.7.5",
+    "standard-version": "^4.2.0",
+    "write-json-file": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-es2015": "^6.24.1",
+    "find-up": "^2.1.0",
+    "load-json-file": "^2.0.0"
+  }
+}
