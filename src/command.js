@@ -15,7 +15,7 @@ export default class Command
 {
 	constructor(input, flags, cwd) {
 		log.pause();
-		log.heading = "kaltura-ng-workspace";
+		log.heading = "vidiun-ng-workspace";
 
 		if (flags.loglevel) {
 			log.level = flags.loglevel;

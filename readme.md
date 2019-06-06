@@ -1,12 +1,12 @@
-# Kaltura Dev Workspace
+# Vidiun Dev Workspace
 
-[![Gitter chat](https://badges.gitter.im/kaltura-ng/dev-tools.png)](https://gitter.im/kaltura-ng/dev-tools) [![npm version](https://badge.fury.io/js/%40kaltura-ng%2Fdev-workspace.svg)](https://badge.fury.io/js/%40kaltura-ng%2Fdev-workspace)
+[![Gitter chat](https://badges.gitter.im/vidiun-ng/dev-tools.png)](https://gitter.im/vidiun-ng/dev-tools) [![npm version](https://badge.fury.io/js/%40vidiun-ng%2Fdev-workspace.svg)](https://badge.fury.io/js/%40vidiun-ng%2Fdev-workspace)
 
 Tool for managing JavaScript projects with multiple packages. 
 
 ## About
 
-Our code base for [kmc-ng](https://github.com/kaltura/kmc-ng) and [tvm-ng](https://github.com/kaltura/tvm-ng) is organized into multiple packages/repositories. However, making changes across many repositories is messy.
+Our code base for [vmc-ng](https://github.com/vidiun/vmc-ng) and [tvm-ng](https://github.com/vidiun/tvm-ng) is organized into multiple packages/repositories. However, making changes across many repositories is messy.
 
 For [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) there is a great tool named [lerna](https://github.com/lerna/lerna) that optimizes the workflow around managing multi-package repositories with git and npm.
  
@@ -19,10 +19,10 @@ For [monorepos](https://github.com/babel/babel/blob/master/doc/design/monorepo.m
   
  To overcome this issue we created this tool.
    
- > Kaltura dev workspace package is inspired deeply from `lerna` tool. We find `lerna` the best tool that simplify complicated dev-op operation. We recommend you to try `lerna` for your own projects.  
+ > Vidiun dev workspace package is inspired deeply from `lerna` tool. We find `lerna` the best tool that simplify complicated dev-op operation. We recommend you to try `lerna` for your own projects.  
    
 ## Who should use this tool
-This tool was created for Kaltura applications development and is not suppose to be used for other projects.
+This tool was created for Vidiun applications development and is not suppose to be used for other projects.
 
 ## Getting Started
 
@@ -40,40 +40,40 @@ This tool was created for Kaltura applications development and is not suppose to
  ```
 3. add this tool to your folder in your root folder by running the following command:
 ```
-$ npm install @kaltura-ng/dev-workspace
+$ npm install @vidiun-ng/dev-workspace
 ```
 
-4. create file `kaltura-ws.json` in your root folder with the following format:
+4. create file `vidiun-ws.json` in your root folder with the following format:
 
 ```json
  {
    "version" : "2.0.0",
    "repositories": [
-     { "origin" : "github", "uri": "https://github.com/kaltura/kaltura-ng.git"},
-     { "origin" : "github", "uri": "https://github.com/kaltura/kaltura-ng-mc-theme.git"},
-     { "origin" : "github", "uri": "https://github.com/kaltura/kmc-ng.git"}
+     { "origin" : "github", "uri": "https://github.com/vidiun/vidiun-ng.git"},
+     { "origin" : "github", "uri": "https://github.com/vidiun/vidiun-ng-mc-theme.git"},
+     { "origin" : "github", "uri": "https://github.com/vidiun/vmc-ng.git"}
    ],
    "licenses" : {
      "ignoreList" : [      
-       "kaltura-typescript-client"
+       "vidiun-typescript-client"
      ]
    }
  }
 
 ```
 **Notes**: 
-- **you should modify repositories property to hold a list of relevant repositories to your kaltura project ordering them by the dependency constraints**.
-- the sample above will setup your workspace to develop [kmc-ng application](https://github.com/kaltura/kmc-ng).
+- **you should modify repositories property to hold a list of relevant repositories to your vidiun project ordering them by the dependency constraints**.
+- the sample above will setup your workspace to develop [vmc-ng application](https://github.com/vidiun/vmc-ng).
   
 5. add the following to your `package.json`:
 ```json
 {  
   "scripts" : {
-    "kws" : "kws",
-    "setup" : "kws setup",
-    "build" : "kws run build",
-    "licenses" : "kws licenses",
-    "clean" : "kws clean"
+    "vws" : "vws",
+    "setup" : "vws setup",
+    "build" : "vws run build",
+    "licenses" : "vws licenses",
+    "clean" : "vws clean"
   }
 }
 ```

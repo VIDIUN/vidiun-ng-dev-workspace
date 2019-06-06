@@ -22,30 +22,30 @@ export default class WorkspaceConfig
 
   async load()
   {
-    const kwsJsonPath = findUp.sync("kaltura-ws.json", { cwd: process.cwd() });
+    const vwsJsonPath = findUp.sync("vidiun-ws.json", { cwd: process.cwd() });
 
-    if (!kwsJsonPath)
+    if (!vwsJsonPath)
     {
-      log.error(`file 'kaltura-ws.json' is missing, aborting command.`);
+      log.error(`file 'vidiun-ws.json' is missing, aborting command.`);
       process.exit(1);
       return;
     }
 
-    this.kwsVersion = require("../package.json").version;
+    this.vwsVersion = require("../package.json").version;
 
-    this.rootPath = path.dirname(kwsJsonPath);
+    this.rootPath = path.dirname(vwsJsonPath);
     log.verbose("rootPath", this.rootPath);
-    this._kwsJsonPath = kwsJsonPath;
-    this._kwsConfig = loadJsonFile.sync(kwsJsonPath);
-    log.silly('kaltura-ws', this._kwsConfig);
+    this._vwsJsonPath = vwsJsonPath;
+    this._vwsConfig = loadJsonFile.sync(vwsJsonPath);
+    log.silly('vidiun-ws', this._vwsConfig);
 
-    this.version = this._kwsConfig.version;
-    this.licenses = this._kwsConfig.licenses || null;
+    this.version = this._vwsConfig.version;
+    this.licenses = this._vwsConfig.licenses || null;
 
-    log.verbose(`checking competability of kws version ${this.kwsVersion} with config version ${this.version}`);
-    if (!semver.satisfies(this.kwsVersion, `^${this.version}`))
+    log.verbose(`checking competability of vws version ${this.vwsVersion} with config version ${this.version}`);
+    if (!semver.satisfies(this.vwsVersion, `^${this.version}`))
     {
-      log.error(`Major version mismatch: The current version '@kaltura-ng/dev-workspace' is ${this.kwsVersion}, but the version in 'kaltura-ws.json' is ${this.version}. You can either update your json file or install '@kaltura-ng/dev-workspace@${this.version}'`);
+      log.error(`Major version mismatch: The current version '@vidiun-ng/dev-workspace' is ${this.vwsVersion}, but the version in 'vidiun-ws.json' is ${this.version}. You can either update your json file or install '@vidiun-ng/dev-workspace@${this.version}'`);
       process.exit(1);
     }
 
@@ -54,17 +54,17 @@ export default class WorkspaceConfig
 
   }
 
-  getKWSCommandValue(path)
+  getVWSCommandValue(path)
   {
     return `commands.${path}`.split('.').reduce(function(prev, curr) {
       return prev ? prev[curr] : undefined
-    }, this._kwsConfig);
+    }, this._vwsConfig);
   }
 
-  updateKWSConfig(data)
+  updateVWSConfig(data)
   {
-    objectAssignDeep(this._kwsConfig,data);
-    writeJsonFile.sync(this._kwsJsonPath, this._kwsConfig, { indent: 2 });
+    objectAssignDeep(this._vwsConfig,data);
+    writeJsonFile.sync(this._vwsJsonPath, this._vwsConfig, { indent: 2 });
   }
 
   async _loadRepositories()
@@ -73,7 +73,7 @@ export default class WorkspaceConfig
 
     const repositories = [];
 
-    await Promise.all((this._kwsConfig.repositories || ['.']).map(repositoryData =>
+    await Promise.all((this._vwsConfig.repositories || ['.']).map(repositoryData =>
     {
       return new Promise(async (resolve, reject) =>
       {
@@ -204,7 +204,7 @@ export default class WorkspaceConfig
   {
     const tracker = log.newItem('syncLernaJsonFile');
     const lernaJson = {
-      "NOTICE" : "This file is used internally by kaltura-ng-workspace. you should avoid using lerna cli directly",
+      "NOTICE" : "This file is used internally by vidiun-ng-workspace. you should avoid using lerna cli directly",
       "lerna": "0.0.2",
       packages : [],
       "npmClient": "npm"
@@ -237,7 +237,7 @@ export default class WorkspaceConfig
     this.lernaDirPath = path.resolve(__dirname,"../");
     log.silly("lernaDirPath",this.lernaDirPath);
 
-    log.verbose('creating file lerna.json. This file is used internally by kaltura-ng-workspace. you should avoid using lerna cli directly.');
+    log.verbose('creating file lerna.json. This file is used internally by vidiun-ng-workspace. you should avoid using lerna cli directly.');
     log.verbose('new file lerna.json content',lernaJson);
     writeJsonFile.sync(path.join(this.lernaDirPath,'lerna.json'), lernaJson, { indent: 2 });
   }

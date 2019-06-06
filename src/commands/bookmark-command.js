@@ -33,12 +33,12 @@ export default class BookmarkCommand extends Command {
         latestCommitId = latestCommitId.match(/^[a-f0-9]{7,40}/);
         log.verbose(`commit id ${latestCommitId}`);
 
-        this.workspace.updateKWSConfig({commands: {bookmark: {[this.bookmarkName] : latestCommitId}}});
+        this.workspace.updateVWSConfig({commands: {bookmark: {[this.bookmarkName] : latestCommitId}}});
 
       } else {
         log.info(`git checkout to stored commit of bookmark named ${this.bookmarkName}`);
 
-        const bookmarkCommitId = this.workspace.getKWSCommandValue(`bookmark.${this.bookmarkName}`);
+        const bookmarkCommitId = this.workspace.getVWSCommandValue(`bookmark.${this.bookmarkName}`);
 
         if (!bookmarkCommitId)
         {

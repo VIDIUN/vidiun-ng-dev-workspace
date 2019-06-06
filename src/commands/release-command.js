@@ -117,7 +117,7 @@ export default class ReleaseCommand extends Command {
 
     try {
 
-      const token = this.workspace.getKWSCommandValue('release.appConfig.githubToken') || this.options['gh-token'];
+      const token = this.workspace.getVWSCommandValue('release.appConfig.githubToken') || this.options['gh-token'];
 
       if (!token) {
         throw new Error('Github token is not provided. aborting');
@@ -331,7 +331,7 @@ export default class ReleaseCommand extends Command {
   async updateChangelogComponent(changelog) {
     this.logger.info('Update changelog component.');
 
-    const changelogComponentPath = this.workspace.getKWSCommandValue('release.changeLog.htmlPath');
+    const changelogComponentPath = this.workspace.getVWSCommandValue('release.changeLog.htmlPath');
     const filePath = changelogComponentPath ? findUp.sync(changelogComponentPath, { cwd: process.cwd() }) : '';
 
     if (!filePath) {
@@ -367,9 +367,9 @@ export default class ReleaseCommand extends Command {
   updateAppConfigVersion(newVersion) {
     this.logger.info('Update app-config with new version.');
 
-    const appConfigPath = this.workspace.getKWSCommandValue('release.appConfig.path');
+    const appConfigPath = this.workspace.getVWSCommandValue('release.appConfig.path');
     const filePath = appConfigPath ? findUp.sync(appConfigPath, { cwd: process.cwd() }) : '';
-    const appVersionKey = this.workspace.getKWSCommandValue('release.appConfig.key');
+    const appVersionKey = this.workspace.getVWSCommandValue('release.appConfig.key');
 
     if (!filePath || !appVersionKey) {
       this.logger.warn('Cannot update application version. Reason: missing filePath or appVersion key. Skip step');

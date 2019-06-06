@@ -1,17 +1,17 @@
 {
-  "name": "@kaltura-ng/dev-workspace",
+  "name": "@vidiun-ng/dev-workspace",
   "version": "2.4.1",
-  "description": "Kaltura internal tool used to setup Kaltura applications development workspace",
+  "description": "Vidiun internal tool used to setup Vidiun applications development workspace",
   "bin": {
-    "kws": "./bin/kws.js"
+    "vws": "./bin/vws.js"
   },
   "scripts": {
     "build": "babel src -d lib",
     "release": "npm run build && standard-version"
   },
   "author": {
-    "name": "Kaltura Community",
-    "email": "community@kaltura.com"
+    "name": "Vidiun Community",
+    "email": "community@vidiun.com"
   },
   "engines": {
     "node": ">= 7.0.0",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaltura/kaltura-ng-dev-workspace"
+    "url": "https://github.com/vidiun/vidiun-ng-dev-workspace"
   },
   "files": [
     "lib/",
